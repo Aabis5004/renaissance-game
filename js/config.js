@@ -1,6 +1,4 @@
-// Renaissance Game Configuration
 const CONFIG = {
-    // Your VPS backend URLs
     API_BASE_URL: 'http://162.250.191.81:3002',
     SOCKET_URL: 'http://162.250.191.81:3002',
     
@@ -9,9 +7,7 @@ const CONFIG = {
     HONK_COOLDOWN: 3000,
     PLONK_COOLDOWN: 5000,
     
-    // Debug mode
     DEBUG: true
 };
 
-// Log configuration on load
 console.log('Renaissance Config Loaded:', CONFIG);
