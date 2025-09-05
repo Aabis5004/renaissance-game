@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renaissance: Aztec Privacy Arena</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/aztec-ui.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+</head>
+<body>
+    <div id="app">
+        <!-- Connection Status -->
+        <div id="connection-status" class="connection-status">
+            <span id="status-text">Connecting...</span>
+            <div id="status-indicator"></div>
+        </div>
+        
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen active">
+            <div class="aztec-container">
+                <div class="aztec-glow"></div>
+                
+                <h1 class="game-title">
+                    <span class="gradient-text">RENAISSANCE</span>
+                    <span class="subtitle">Aztec Privacy Arena</span>
+                </h1>
+                
+                <div class="login-form">
+                    <input type="text" id="twitter-handle" placeholder="Enter Twitter Handle (@username)" class="aztec-input">
+                    <input type="text" id="display-name" placeholder="Display Name" class="aztec-input">
+                    <button id="join-game" class="aztec-button primary">
+                        <span>ENTER ARENA</span>
+                    </button>
+                </div>
+                
+                <div class="game-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="active-players">0</div>
+                        <div class="stat-label">Active Players</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-games">0</div>
+                        <div class="stat-label">Games Today</div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="aztec-button secondary" onclick="showScreen('leaderboard-screen')">
+                        🏆 LEADERBOARD
+                    </button>
+                    <button class="aztec-button secondary" onclick="showStats()">
+                        📊 STATS
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Waiting Screen -->
+        <div id="waiting-screen" class="screen">
+            <div class="aztec-container">
+                <h2 class="gradient-text">SEARCHING FOR OPPONENT</h2>
+                <div class="loading-animation">
+                    <div class="honk-pulse"></div>
+                    <div class="plonk-orbit"></div>
+                </div>
+                <p class="waiting-text">Position in queue: <span id="queue-position">1</span></p>
+                <button class="aztec-button secondary" onclick="cancelWaiting()">
+                    CANCEL
+                </button>
+            </div>
+        </div>
+        
+        <!-- Game Arena -->
+        <div id="game-screen" class="screen">
+            <div class="arena-header">
+                <div class="player-info left">
+                    <div class="player-name" id="player1-name">You</div>
+                    <div class="power-bars">
+                        <div class="power-bar honk">
+                            <span>HONK</span>
+                            <div class="bar-container">
+                                <div class="bar-fill" id="player1-honk"></div>
+                            </div>
+                        </div>
+                        <div class="power-bar plonk">
+                            <span>PLONK</span>
+                            <div class="bar-container">
+                                <div class="bar-fill" id="player1-plonk"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="arena-center">
+                    <div class="versus">VS</div>
+                    <div class="timer" id="game-timer">00:00</div>
+                </div>
+                
+                <div class="player-info right">
+                    <div class="player-name" id="player2-name">Opponent</div>
+                    <div class="power-bars">
+                        <div class="power-bar honk">
+                            <span>HONK</span>
+                            <div class="bar-container">
+                                <div class="bar-fill" id="player2-honk"></div>
+                            </div>
+                        </div>
+                        <div class="power-bar plonk">
+                            <span>PLONK</span>
+                            <div class="bar-container">
+                                <div class="bar-fill" id="player2-plonk"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="battle-arena">
+                <canvas id="game-canvas"></canvas>
+                <div class="particle-system" id="particles"></div>
+            </div>
+            
+            <div class="controls">
+                <button class="attack-btn honk-btn" id="honk-attack">
+                    <span>HONK ATTACK</span>
+                    <div class="cooldown" id="honk-cooldown"></div>
+                </button>
+                <button class="attack-btn plonk-btn" id="plonk-shield">
+                    <span>PLONK SHIELD</span>
+                    <div class="cooldown" id="plonk-cooldown"></div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Leaderboard -->
+        <div id="leaderboard-screen" class="screen">
+            <div class="aztec-container">
+                <h2 class="gradient-text">PRIVACY CHAMPIONS</h2>
+                <div class="leaderboard-table" id="leaderboard-content">
+                    <!-- Leaderboard content will be loaded here -->
+                </div>
+                <button class="aztec-button secondary" onclick="showScreen('login-screen')">
+                    BACK TO ARENA
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>
