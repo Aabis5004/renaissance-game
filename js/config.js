@@ -1,4 +1,4 @@
-const CONFIG = {
+window.CONFIG = {
     API_BASE_URL: 'https://seismicwall.duckdns.org/renaissance',
     SOCKET_URL: 'https://seismicwall.duckdns.org/renaissance',
     
@@ -10,4 +10,4 @@ const CONFIG = {
     DEBUG: true
 };
 
-console.log('Renaissance Config Loaded:', CONFIG);
+console.log('Renaissance Config Loaded:', window.CONFIG);
