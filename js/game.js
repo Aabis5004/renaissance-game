@@ -16,9 +16,10 @@ class RenaissanceGame {
         this.updateConnectionStatus('Connecting...', 'connecting');
         
         this.socket = io(CONFIG.SOCKET_URL, {
-            transports: ['websocket', 'polling'],
-            timeout: 20000
-        });
+    transports: ['websocket', 'polling'],
+    timeout: 20000,
+    path: '/renaissance/socket.io/'
+});
         
         this.socket.on('connect', () => {
             console.log('Connected to Renaissance server');
