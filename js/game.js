@@ -17,7 +17,8 @@ class RenaissanceGame {
         
         this.socket = io(CONFIG.SOCKET_URL, {
     transports: ['websocket', 'polling'],
-    timeout: 20000
+    timeout: 20000,
+    path: '/renaissance/socket.io/'
 });
         
         this.socket.on('connect', () => {
