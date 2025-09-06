@@ -1,6 +1,6 @@
 const CONFIG = {
-    API_BASE_URL: 'https://seismicwall.duckdns.org/renaissance',
-    SOCKET_URL: 'https://seismicwall.duckdns.org/renaissance',
+    API_BASE_URL: 'http://162.250.191.81:3002',
+    SOCKET_URL: 'http://162.250.191.81:3002',
     
     GAME_VERSION: '1.0.0',
     MAX_PLAYERS_PER_GAME: 2,
